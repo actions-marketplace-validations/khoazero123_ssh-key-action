@@ -1,5 +1,5 @@
 {
-  "name": "install-ssh-key",
+  "name": "config-ssh-key",
   "version": "2.5.1",
   "private": true,
   "description": "Install SSH key in .ssh",
@@ -19,7 +19,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shimataro/ssh-key-action.git"
+    "url": "git+https://github.com/khoazero123/ssh-key-action.git"
   },
   "keywords": [
     "actions",
@@ -28,7 +28,7 @@
     "ssh",
     "ssh key"
   ],
-  "author": "shimataro",
+  "author": "khoazero123",
   "license": "MIT",
   "devDependencies": {
     "@actions/core": "1.10.0",

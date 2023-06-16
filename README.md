@@ -39,6 +39,7 @@ steps:
     known_hosts: ${{ secrets.KNOWN_HOSTS }}
     config: ${{ secrets.CONFIG }} # ssh_config; optional
     if_key_exists: fail # replace / ignore / fail; optional (defaults to fail)
+    cleanup: false # Should remove .ssh directory? set false to keep .ssh directory
 - name: rsync over SSH
   run: rsync -r ./foo/ user@remote:bar/
 ```

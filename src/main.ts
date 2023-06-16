@@ -111,10 +111,13 @@ function setup(): void {
  * cleanup function
  */
 function cleanup(): void {
-    // remove ".ssh" directory
-    const sshDirName = removeSshDirectory();
+    const shouldCleanup = core.getBooleanInput("cleanup");
+    if (shouldCleanup) {
+        // remove ".ssh" directory
+        const sshDirName = removeSshDirectory();
 
-    console.log(`SSH key in ${sshDirName} has been removed successfully.`);
+        console.log(`SSH key in ${sshDirName} has been removed successfully.`);
+    }
 }
 
 /**

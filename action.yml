@@ -1,7 +1,7 @@
 # https://help.github.com/en/articles/metadata-syntax-for-github-actions
-name: "Install SSH Key"
-description: "Install SSH key in ~/.ssh"
-author: "shimataro"
+name: "Config SSH Key"
+description: "Config SSH key in ~/.ssh"
+author: "khoazero123"
 branding:
   icon: "terminal"
   color: "gray-dark"
@@ -25,6 +25,10 @@ inputs:
     description: "replace / ignore / fail"
     required: false
     default: "fail"
+  cleanup:
+    description: "Should remove .ssh directory?"
+    required: false
+    default: true
 runs:
   using: "node16"
   main: "lib/index.js"
