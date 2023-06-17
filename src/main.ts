@@ -139,8 +139,10 @@ function createSshDirectory(): string {
  */
 function removeSshDirectory(): string {
     const dirName = getSshDirectory();
-    fs.rmSync(dirName, {
-        recursive: true,
+    fs.rmSync(`${dirName}/config`, {
+        force: true,
+    });
+    fs.rmSync(`${dirName}/known_hosts`, {
         force: true,
     });
     return dirName;
