@@ -99,10 +99,14 @@ function setup(): void {
     }
 
     // create files
+    const fileNames = [];
     for (const file of files) {
         const fileName = path.join(sshDirName, file.name);
         fs.writeFileSync(fileName, file.contents, file.options);
+        fileNames.push(fileName);
     }
+
+    core.saveState("files", fileNames);
 
     console.log(`SSH key has been stored to ${sshDirName} successfully.`);
 }
@@ -139,12 +143,15 @@ function createSshDirectory(): string {
  */
 function removeSshDirectory(): string {
     const dirName = getSshDirectory();
-    fs.rmSync(`${dirName}/config`, {
-        force: true,
-    });
-    fs.rmSync(`${dirName}/known_hosts`, {
-        force: true,
-    });
+    const fileNames = JSON.parse(core.getState("files"));
+
+    for (const filePath of fileNames) {
+        fs.rmSync(filePath, {
+            force: true,
+        });
+        console.log(`File ${filePath} has been removed.`);
+    }
+
     return dirName;
 }
 
